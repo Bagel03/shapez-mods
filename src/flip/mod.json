@@ -1,0 +1,10 @@
+{
+    "entry": "main.js",
+    "id": "bagel03:flipper",
+    "version": "mod_version",
+    "name": "Flipper",
+    "author": "Bagel03",
+    "description": "Allows you to flip buildings",
+    "website": "bagel03.web.app",
+    "settings": {}
+}

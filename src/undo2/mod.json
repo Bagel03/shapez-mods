@@ -1,0 +1,12 @@
+{
+    "entry": "main.js",
+    "id": "bagel03:undoredo",
+    "version": "0.0.1",
+    "name": "Undo - Redo",
+    "author": "Bagel03",
+    "description": "Allows you to undo or redo actions",
+    "website": "bagel03.web.app",
+    "settings": {
+        "action-backup-limit": 20
+    }
+}

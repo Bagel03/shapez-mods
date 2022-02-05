@@ -1,0 +1,34 @@
+{
+    "name": "mod_id",
+    "version": "mod_version",
+    "author": "mod_author",
+    "mod-info": {
+        "name": "mod_name",
+        "website": "mod_website",
+        "description": "mod_descripiton",
+        "settings": {}
+    },
+    "license": "GPL-3.0-only",
+    "scripts": {
+        "dev": "cd gulp && yarn gulp",
+        "devStandalone": "cd gulp && yarn gulp main.watch.standalone",
+        "build": "cd gulp && yarn gulp main.build",
+        "tslint": "cd src/js && yarn tsc",
+        "lint": "yarn eslint src/js",
+        "prettier-all": "yarn prettier --write src/**/*.* && yarn prettier --write gulp/**/*.*"
+    },
+    "private": true,
+    "dependencies": {
+        "eslint": "8.7.0",
+        "three": "^0.137.5",
+        "typescript": "4.5.4"
+    },
+    "devDependencies": {
+        "@types/node": "^17.0.9",
+        "@typescript-eslint/eslint-plugin": "5.10.0",
+        "@typescript-eslint/parser": "5.10.0",
+        "eslint-config-prettier": "8.3.0",
+        "eslint-plugin-prettier": "4.0.0",
+        "prettier": "^2.0.4"
+    }
+}
