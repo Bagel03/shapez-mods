@@ -1,0 +1,12 @@
+{
+    "entry": "main.js",
+    "id": "bagel03:2.5D",
+    "version": "0.0.1",
+    "name": "2.5D",
+    "author": "Bagel03",
+    "description": "Allows you to undo or redo actions",
+    "website": "bagel03.web.app",
+    "settings": {
+        "action-backup-limit": 20
+    }
+}
