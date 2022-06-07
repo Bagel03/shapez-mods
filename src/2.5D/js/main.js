@@ -7,10 +7,9 @@ import { PointerLockControls } from "three/examples/jsm/controls/PointerLockCont
 import { MOD_SIGNALS } from "shapez/mods/mod_signals";
 import { HUDSettingsMenu } from "shapez/game/hud/parts/settings_menu";
 
-  
 class Two5DMod extends Mod {
     init() {
+        return;
         setupThree(this.modInterface);
-        
     }
 }

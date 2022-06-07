@@ -2,16 +2,15 @@ import { HUDBuildingPlacerLogic } from "shapez/game/hud/parts/building_placer_lo
 import { ModInterface } from "shapez/mods/mod_interface";
 
 /**
- * 
- * @param {ModInterface} $ 
+ *
+ * @param {ModInterface} $
  */
-export const initActionBeltPlanner = ($) => {
-    return;
-    $.replaceMethod(HUDBuildingPlacerLogic, "executeDirectionLockedPlacement", function(old){
+export const initActionBeltPlanner = $ => {
+    $.replaceMethod(HUDBuildingPlacerLogic, "executeDirectionLockedPlacement", function (old) {
         //@ts-ignore
         this.root.actionHandler.startGroupAction();
         old();
         //@ts-ignore
         this.root.actionHandler.initAction(this.root.actionHandler.endGroupAction());
-    })
-}
+    });
+};

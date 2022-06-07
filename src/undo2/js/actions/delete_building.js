@@ -4,19 +4,18 @@ import { ModInterface } from "shapez/mods/mod_interface";
 import { DeleteBuildingAction } from "./building";
 
 /**
- * 
- * @param {ModInterface} $ 
+ *
+ * @param {ModInterface} $
  */
-export const initActionDeleteBuilding = ($) => {
-    $.replaceMethod(BaseMap, "removeStaticEntity", function(old, [entity]) {
+export const initActionDeleteBuilding = $ => {
+    $.replaceMethod(BaseMap, "removeStaticEntity", function (old, [entity]) {
         const action = new DeleteBuildingAction(entity, this.root);
-        
+
         //@ts-ignore
-        this.root.actionHandler.initAction(action)
-    })
+        this.root.actionHandler.initAction(action);
+    });
 
-    $.replaceMethod(GameLogic, "tryDeleteBuilding", function(old, [building]) {
-
+    $.replaceMethod(GameLogic, "tryDeleteBuilding", function (old, [building]) {
         return old(building);
-    })
-}
+    });
+};

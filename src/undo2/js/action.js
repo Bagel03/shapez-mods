@@ -2,7 +2,6 @@
 
 import { createLogger } from "shapez/core/logging";
 
-
 const logger = createLogger("MOD: Undo-Redo");
 
 export class GroupAction {
@@ -13,7 +12,7 @@ export class GroupAction {
     addAction(action) {
         this.actions.push(action);
     }
-    
+
     removeAction(action) {
         this.actions = this.actions.filter(a => action !== action);
     }
@@ -23,13 +22,11 @@ export class GroupAction {
     }
 
     undo() {
-        for(let i = this.actions.length - 1; i > -1; i--)
-            this.actions[i].undo();
+        for (let i = this.actions.length - 1; i > -1; i--) this.actions[i].undo();
     }
 
     redo() {
-        for(let i = 0; i < this.actions.length; i++)
-            this.actions[i].redo();
+        for (let i = 0; i < this.actions.length; i++) this.actions[i].redo();
     }
 }
 
@@ -37,7 +34,7 @@ export class ActionHandler {
     constructor() {
         this.actions = [];
         this.currentPos = -1; // Where we are in the array
-        this.maxSize = 20;
+        this.maxSize = Infinity; // MAKE THIS BIGGER
         this.currentlyGrouping = -1;
         this.currentGroups = [];
     }
@@ -48,7 +45,7 @@ export class ActionHandler {
     }
 
     endGroupAction() {
-        this.currentlyGrouping--;;
+        this.currentlyGrouping--;
         const oldGroup = this.currentGroups.pop();
         this.currentGroup = null;
         return oldGroup;
@@ -65,7 +62,7 @@ export class ActionHandler {
     }
 
     initAction(action) {
-        if(this.currentlyGrouping > -1){
+        if (this.currentlyGrouping > -1) {
             this.currentGroups[this.currentlyGrouping].addAction(action);
             const result = action.init();
             return result;
@@ -73,27 +70,35 @@ export class ActionHandler {
         this.actions = this.actions.slice(0, this.currentPos + 1); // Delete future history after we change something
         const result = action.init();
         this.actions.push(action);
-        if(this.actions.length > this.maxSize) this.actions.shift();
+        if (this.actions.length > this.maxSize) this.actions.shift();
         else this.currentPos++;
 
         return result;
     }
 
     undoAction() {
-        if(this.currentPos < 0) return logger.log("Nothing to undo");
+        if (this.currentPos < 0) return logger.log("Nothing to undo");
         const action = this.actions[this.currentPos];
         action.undo();
         this.currentPos--;
-
     }
 
     redoAction() {
-        if(this.currentPos === this.actions.length - 1) return logger.log("Nothing to Redo");
+        if (this.currentPos === this.actions.length - 1) return logger.log("Nothing to Redo");
         this.currentPos++;
         const action = this.actions[this.currentPos];
         action.redo();
+    }
 
+    undoAllActions() {
+        while (this.currentPos >= 0) {
+            this.undoAction();
+        }
+    }
+
+    redoAllActions() {
+        while (this.currentPos < this.actions.length - 1) {
+            this.redoAction();
+        }
     }
 }
-
-
