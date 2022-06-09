@@ -1,0 +1,10 @@
+{
+    "entry": "main.js",
+    "id": "bagel03TestMod",
+    "version": "1.0.0",
+    "name": "Test",
+    "author": "Bagel03",
+    "description": "Test",
+    "website": "",
+    "settings": {}
+}

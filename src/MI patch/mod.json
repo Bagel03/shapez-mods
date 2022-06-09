@@ -1,0 +1,14 @@
+{
+    "entry": "main.js",
+    "id": "!bagel03MIpatch",
+    "version": "1.0.0",
+    "name": "Mod Interface Patcher",
+    "author": "Bagel03",
+    "description": "Updates the mod interface, allowing enable/disable of mods.",
+    "website": "",
+    "settings": {
+        "enabledMods": [
+            "!bagel03MIpatch"
+        ]
+    }
+}
