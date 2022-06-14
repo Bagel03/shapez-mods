@@ -1,0 +1,12 @@
+{
+    "entry": "main.js",
+    "id": "bagel03PuzzleCrack",
+    "version": "1.0.0",
+    "name": "Puzzle Crack",
+    "author": "Bagel03",
+    "description": "Lets you play the puzzle DLC with mods",
+    "website": "",
+    "settings": {
+        "puzzleToken":""
+    }
+}

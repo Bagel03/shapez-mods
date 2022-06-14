@@ -36,9 +36,7 @@ declare const bgFps: 30;
 declare const desiredMsDelay: number;
 declare let lastTick: number;
 declare module "shapez/core/config.local" {
-    namespace _default {
-        export const externalModUrl: string[];
-    }
+    let _default: {};
     export default _default;
 }
 declare module "shapez/core/config" {
@@ -8383,7 +8381,6 @@ declare module "shapez/mods/mod" {
             doesNotAffectSavegame?: boolean;
         };
         signals: {
-            modsLoaded: import("shapez/core/signal").Signal;
             appBooted: import("shapez/core/signal").Signal;
             modifyLevelDefinitions: any;
             modifyUpgrades: any;
@@ -9821,7 +9818,6 @@ declare module "shapez/mods/modloader" {
         }[];
         initialized: boolean;
         signals: {
-            modsLoaded: import("shapez/core/signal").Signal;
             appBooted: import("shapez/core/signal").Signal;
             modifyLevelDefinitions: any;
             modifyUpgrades: any;
@@ -11867,7 +11863,6 @@ declare module "shapez/states/ingame" {
 }
 declare module "shapez/mods/mod_signals" {
     export namespace MOD_SIGNALS {
-        export const modsLoaded: Signal;
         export const appBooted: Signal;
         export const modifyLevelDefinitions: any;
         export const modifyUpgrades: any;
@@ -13840,7 +13835,7 @@ declare module "shapez/platform/api" {
          * @type {string|null}
          */
         token: string | null;
-        getEndpoint(): "http://localhost:15001" | "https://api-staging.shapez.io" | "https://api.shapez.io";
+        getEndpoint(): string;
         isLoggedIn(): boolean;
         /**
          *

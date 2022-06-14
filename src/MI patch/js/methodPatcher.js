@@ -42,7 +42,7 @@ export class MethodPatcher {
 
         // modInterface.modLoader.signals.modsLoaded.add(() => this.recompile());
 
-        window.recompile = () => this.recompile();
+
     }
 
     effect(modID, classHandle, method) {
